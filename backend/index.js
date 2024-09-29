@@ -1,11 +1,14 @@
+import dotenv from 'dotenv';
+dotenv.config()
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors"
-
+import { connectToDatabase } from './utils/db.js';
 const app = express();
-const post = process.env.Port || 8000
+const post = process.env.Port || 3000
 
 
+connectToDatabase()
 
 // middlewaew
 app.use(express.json());
@@ -19,8 +22,6 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-
-
 
 
 
