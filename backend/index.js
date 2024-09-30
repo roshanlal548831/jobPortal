@@ -4,6 +4,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import { connectToDatabase } from './utils/db.js';
+import userRouter from './routes/userRoutes.js';
 const app = express();
 const post = process.env.Port || 3000
 
@@ -23,6 +24,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+//http://localhost:8000/api/b1/user
+
+app.use("/api/b1/user",userRouter)
 
 
 
