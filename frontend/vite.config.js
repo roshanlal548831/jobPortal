@@ -7,7 +7,7 @@ export default defineConfig({
   // server: {
   //   proxy: {
   //     '/api': {
-  //       target: 'https://instagram-mxpp.onrender.com', // Backend server URL
+  //       target: 'http://localhost:8000', // Backend server URL
   //       changeOrigin: true,
   //       secure: false,
   //       rewrite: (path) => path.replace(/^\/api/, 'api'),

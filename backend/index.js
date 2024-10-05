@@ -31,10 +31,10 @@ app.use(cors(corsOptions));
 
 //http://localhost:8000/api/b1/user
 
-app.use("/api/b1/user",userRouter)
-app.use("/api/b1/company",companyRoures)
-app.use("/api/b1/job",jobRoutes)
-app.use("/api/b1/applicatios",applicationRoutes)
+app.use("/api/v1/user",userRouter)
+app.use("/api/v1/company",companyRoures)
+app.use("/api/v1/job",jobRoutes)
+app.use("/api/v1/applicatios",applicationRoutes)
 
 
 
