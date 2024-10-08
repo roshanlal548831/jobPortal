@@ -8,11 +8,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '@/redux/authSlice'
+import { Loader2 } from 'lucide-react'
 
 
 const Signup = () => {
 
   const navigation = useNavigate()
+  const dipatch = useDispatch();
+  const {loading} = useSelector(store => store.auth)
 
   const[input,setInput] = useState({
     fullname:"",
@@ -37,6 +42,7 @@ const Signup = () => {
 const handleSubmit = async(e) => {
   e.preventDefault();
   try {
+    dipatch(setLoading(true))
     const res = await axios.post(`${USER_API_END_POINT}/register`,input)
     if(res.data.success){
       navigation("/login")
@@ -45,6 +51,8 @@ const handleSubmit = async(e) => {
   } catch (error) {
     console.log(error)
     toast.error(error.response.data.message)
+  }finally{
+    dipatch(setLoading(false))
   }
 }
   return (
@@ -132,8 +140,10 @@ const handleSubmit = async(e) => {
                 />
                </div>
                </div>
-               <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Signup</button>
-               <span className='text-[#347b1e]'>Alredy have an account ? <Link  className='text-[#10b4d9] underline' to="/login">Login</Link></span>
+               {
+              loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-red-600 font-bold'>Please wait </h1></button>:
+              <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Signup</button>
+               }                <span className='text-[#347b1e]'>Alredy have an account ? <Link  className='text-[#10b4d9] underline' to="/login">Login</Link></span>
           </form>
       </div>
     </div>

@@ -1,11 +1,16 @@
 import React from 'react'
-import Navar from './shard/Navbar'
 import Navbar from './shard/Navbar'
+import HeroSection from './HeroSection'
+import CategoryCarousel from './CategoryCarousel'
 
 const Home = () => {
   return (
     <div>
      <Navbar/>
+     <HeroSection/>
+     <CategoryCarousel/>
+     {/* <LetestJobs/>
+     <Footer/> */}
     </div>
   )
 }

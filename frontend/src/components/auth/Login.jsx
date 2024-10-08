@@ -8,10 +8,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLoading } from '@/redux/authSlice'
+import { Loader2 } from 'lucide-react'
 
 
 const Login = () => {
   const navigation = useNavigate()
+ const dipatch = useDispatch();
+ const {loading} = useSelector(store => store.auth)
+
   const[input,setInput] = useState({
     email:"",
     password:"",
@@ -29,6 +35,7 @@ const Login = () => {
   const handleSubmit = async(e) => {
   e.preventDefault();
   try {
+    dipatch(setLoading(true))
     const res = await axios.post(`${USER_API_END_POINT}/login`,input)
     console.log(res)
     if(res.data.success){
@@ -36,8 +43,9 @@ const Login = () => {
       toast.success(res.data.message)
     }
   } catch (error) {
-    console.log(error)
     toast.error(error.response.data.message)
+  }finally{
+    dipatch(setLoading(false))
   }
 }
   return (
@@ -94,7 +102,10 @@ const Login = () => {
                 </div>
                 </RadioGroup>
                </div>
-               <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Signup</button>
+               {
+              loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-red-600 font-bold'>Please wait </h1></button>:
+              <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Signup</button>
+               } 
                <span className='text-[#347b1e]'>Don't have an account ? <Link  className='text-[#10b4d9] underline' to="/signup">Signup</Link></span>
           </form>
       </div>
