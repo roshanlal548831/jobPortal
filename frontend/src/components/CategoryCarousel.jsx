@@ -18,7 +18,7 @@ const CategoryCarousel = () => {
               category.map((Item,i)=> {
                 return (
                     
-                    <CarouselItem className="md:basis-1/2 "><Button className="border rounded-3xl shadow-slate-300">{Item}</Button></CarouselItem>
+                    <CarouselItem key={i} className="md:basis-1/2 "><Button className="border rounded-3xl shadow-slate-300">{Item}</Button></CarouselItem>
                 )
               })
            }
