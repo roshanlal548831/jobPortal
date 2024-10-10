@@ -17,8 +17,8 @@ const Navbar = () => {
       <div className='flex items-center gap-4'>
            <ul className='flex font-medium gap-5'>
                <li><Link to="/">Home</Link></li>
-               <li><Link>Jobs</Link></li>
-               <li><Link>Browse</Link></li>
+               <li><Link to="/jobs">Jobs</Link></li>
+               <li><Link to="/browse">Browse</Link></li>
            </ul>
           {
             !user ? (
