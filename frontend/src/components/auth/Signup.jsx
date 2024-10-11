@@ -9,7 +9,7 @@ import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '@/redux/authSlice'
+import { setAuthUser, setLoading } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
 
 
@@ -43,8 +43,9 @@ const handleSubmit = async(e) => {
   e.preventDefault();
   try {
     dipatch(setLoading(true))
-    const res = await axios.post(`${USER_API_END_POINT}/register`,input)
+    const res = await axios.post("/api/v1/user/register",input)
     if(res.data.success){
+      dipatch(setAuthUser(res.data))
       navigation("/login")
       toast.success(res.data.message)
     }

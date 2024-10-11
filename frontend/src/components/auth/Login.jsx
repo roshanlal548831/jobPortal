@@ -9,13 +9,14 @@ import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { toast } from 'sonner'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '@/redux/authSlice'
+import { setAuthUser, setLoading } from '@/redux/authSlice'
 import { Loader2 } from 'lucide-react'
 
 
 const Login = () => {
   const navigation = useNavigate()
  const dipatch = useDispatch();
+
  const {loading} = useSelector(store => store.auth)
 
   const[input,setInput] = useState({
@@ -36,13 +37,14 @@ const Login = () => {
   e.preventDefault();
   try {
     dipatch(setLoading(true))
-    const res = await axios.post(`${USER_API_END_POINT}/login`,input)
-    console.log(res)
+    const res = await axios.post("/api/v1/user/login",input)
     if(res.data.success){
+      dipatch(setAuthUser(res.data))
       navigation("/")
       toast.success(res.data.message)
     }
   } catch (error) {
+    console.log(error)
     toast.error(error.response.data.message)
   }finally{
     dipatch(setLoading(false))
@@ -104,7 +106,7 @@ const Login = () => {
                </div>
                {
               loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-red-600 font-bold'>Please wait </h1></button>:
-              <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Signup</button>
+              <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Login</button>
                } 
                <span className='text-[#347b1e]'>Don't have an account ? <Link  className='text-[#10b4d9] underline' to="/signup">Signup</Link></span>
           </form>

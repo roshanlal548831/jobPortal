@@ -4,9 +4,10 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from '../ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { LogIn, LogOut, User, User2 } from 'lucide-react'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
-   const user = false
+   const {user} = useSelector(store => store.auth)
   return (
     <div className='bg-white'>
     <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
@@ -41,14 +42,14 @@ const Navbar = () => {
                        <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                     <div>
-                        <h4 className='font-medium'>Roshan Verma</h4>
+                        <h4 className='font-medium'>{user.userData.fullname}</h4>
                         <p className='text-sm text-muted-foreground'>Lorem ipsum dolor sit amet.</p>
                     </div>
                    </div>
                    <div className='flex flex-col gap-3 text-gray-600 my-2'>
                        <div className='flex w-fit items-center gap-2 cursor-pointer'>
                            <User2/>
-                            <Button variant="link">View profile</Button>
+                            <Link to={`/profile`}><Button variant="link">View profile</Button></Link>
                        </div>
                        <div className='flex w-fit items-center gap-2 cursor-pointer'>
                          <LogOut/>
