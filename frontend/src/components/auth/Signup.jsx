@@ -39,6 +39,7 @@ const Signup = () => {
   const changeFile = (e) =>{
          setInput({...input,profilePhoto:e.target.files?.[0]?.name})
   }
+  
 const handleSubmit = async(e) => {
   e.preventDefault();
   try {

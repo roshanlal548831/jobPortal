@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './components/auth/Login';
@@ -7,6 +6,7 @@ import Home from './components/Home';
 import Jobs from './components/jobs/Jobs';
 import Browse from './components/browse/Browse';
 import Profile from './components/profile/Profile';
+import JobDescription from './components/jobs/JobDescription';
 
 const appRouter = createBrowserRouter([
    {
@@ -26,6 +26,10 @@ const appRouter = createBrowserRouter([
     element: <Jobs/>
    },
    {
+    path:"jobs/description/:id",
+    element: <JobDescription/>
+   },
+   {
     path:"/browse",
     element: <Browse/>
    },
@@ -36,7 +40,7 @@ const appRouter = createBrowserRouter([
 ])
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
     <>
