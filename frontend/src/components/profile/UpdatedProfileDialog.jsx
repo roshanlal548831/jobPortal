@@ -26,9 +26,6 @@ const UpdatedProfileDialog = ({open,setOpen}) => {
         file:user.userData?.profile?.resume
      })
     
-// const handleOnchange = (e) => {
-//     setInput({...input,e.target.value})
-// }
 
 const changeFile = (e) =>{
    const file = e.target.files?.[0]

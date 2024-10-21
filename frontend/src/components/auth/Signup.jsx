@@ -26,25 +26,28 @@ const Signup = () => {
     password:"",
     file:"",
     role:""
-  })
-  const handleChange = (v) => {
-     const {name,value} = v.target
-      setInput(
-        {
-          ...input,[name]:value
-        }
-      )
-  };
-
+  });
   const changeFile = (e) =>{
-         setInput({...input,profilePhoto:e.target.files?.[0]?.name})
-  }
+    const changeFile = e.target.files?.[0]
+  if(changeFile)setInput({...input,file:changeFile});
+ }
+
+  
+
+ 
   
 const handleSubmit = async(e) => {
+  const formData = new FormData();
+  formData.append("fullname",input.fullname)
+  formData.append("email",input.email)
+  formData.append("phoneNumber",input.phoneNumber)
+  formData.append("password",input.password)
+  formData.append("role",input.role);
+  formData.append("profilePhoto",input.file)
   e.preventDefault();
   try {
     dipatch(setLoading(true))
-    const res = await axios.post("/api/v1/user/register",input)
+    const res = await axios.post("/api/v1/user/register",formData)
     if(res.data.success){
       dipatch(setAuthUser(res.data))
       navigation("/login")
@@ -70,15 +73,15 @@ const handleSubmit = async(e) => {
                    value={input.fullname}
                    type="text" 
                     name="fullname"
-                    onChange={handleChange}
+                    onChange={(e) => setInput({...input,fullname:e.target.value})}
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
                    />
                </div>
                <div className='my-2'>
                    <Label>Email</Label>
                    <Input type="email"
-                    onChange={handleChange}
-                   name="email" 
+                     onChange={(e) => setInput({...input,email:e.target.value})}
+                     name="email" 
                    value={input.email}
                     placeholder="roshan@gmai.com"
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
@@ -87,8 +90,8 @@ const handleSubmit = async(e) => {
                <div className='my-2'>
                    <Label>Phone Number</Label>
                    <Input type="number" 
-                   onChange={handleChange}
-                   name="phoneNumber"
+                     onChange={(e) => setInput({...input,phoneNumber:e.target.value})}
+                     name="phoneNumber"
                    value={input.phoneNumber}
                     placeholder="877076246"
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
@@ -97,8 +100,8 @@ const handleSubmit = async(e) => {
                <div className='my-2'>
                    <Label>Password</Label>
                    <Input type="password" 
-                    onChange={handleChange}
-                      value={input.password}
+                     onChange={(e) => setInput({...input,password:e.target.value})}
+                     value={input.password}
                    name="password"
                     placeholder="***********"
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
@@ -113,7 +116,7 @@ const handleSubmit = async(e) => {
                      value="student"
                       id="option-one"
                       name="role"
-                      onChange={handleChange}
+                      onChange={(e) => setInput({...input,role:e.target.value})}
                       className="cursor-pointer"
                       />
                    <Label htmlFor="option-one">Student</Label>
@@ -121,8 +124,8 @@ const handleSubmit = async(e) => {
                  <div className="flex items-center space-x-2 mx-4">
                  <Input
                     type="radio"
-                    onChange={handleChange}
-                     value="recruiter"
+                    onChange={(e) => setInput({...input,role:e.target.value})}
+                    value="recruiter"
                       id="option-one"
                       name="role"
                       className="cursor-pointer"

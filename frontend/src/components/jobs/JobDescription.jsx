@@ -2,9 +2,20 @@ import React from 'react'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import Navbar from '../shard/Navbar';
+import UseGetSingleJobs from '@/hooks/UseGetSingleJob';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const JobDescription = () => {
+  const {singleJob} = useSelector(store => store.job);
+  console.log("this si singl job",singleJob)
+  const params = useParams()
+  const jobId = params.id
+
+  UseGetSingleJobs(jobId)
+
   const isAppied = true;
+
   return (
     <>
     <Navbar/>

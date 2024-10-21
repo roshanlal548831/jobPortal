@@ -11,7 +11,7 @@ import jobRoutes from "./routes/jobRoutes.js";
 import applicationRoutes from "./routes/applicationsRoutes.js"
 
 const app = express();
-const post = process.env.Port || 3000
+const post = process.env.PORT || 3000
 
 
 connectToDatabase()

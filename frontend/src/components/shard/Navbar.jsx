@@ -11,6 +11,8 @@ import { toast } from 'sonner'
 
 const Navbar = () => {
    const {user} = useSelector(store => store.auth);
+
+
    const dispatch = useDispatch()
    const navigate = useNavigate()
 
@@ -51,14 +53,14 @@ const Navbar = () => {
               <Popover>
               <PopoverTrigger asChild>
               <Avatar className="cursor-pointer">
-                 <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                 <AvatarImage src={user.userData.profile.profilePhoto} alt="@shadcn" />
                  <AvatarFallback>CN</AvatarFallback>
               </Avatar>
              </PopoverTrigger>
                <PopoverContent className="w-80">
                    <div className='flex gap-4 space-y-2'>
                    <Avatar className="cursor-pointer">
-                       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                       <AvatarImage src={user.userData.profile.profilePhoto} alt="@shadcn" />
                        <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                     <div>
