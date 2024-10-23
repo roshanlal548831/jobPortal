@@ -7,15 +7,24 @@ import { useNavigate } from 'react-router-dom'
 
 const Job = ({job}) => {
 
-  const jobsId = "d4fd6sf4ds6f4ds6f4"
-console.log(job)
+  const daysAgoFunctio = (mongdbTime) => {
+     const createdAt = new Date(mongdbTime);
+     const currentTime = new Date();
+     const timeDifference = currentTime - createdAt;
+     return Math.floor(timeDifference/(1000*24*60*60));
+
+  }
+  
+
   const navigate = useNavigate()
+  
+
   return (
     <div className='p-5 rounded-md shadow-xl bg-white border-gray-300'>
         <div className='flex items-center justify-center'>
 
         </div>
-       <p className='text-sm text-gray-500'> 2 days ago</p>
+       <p className='text-sm text-gray-500'>{daysAgoFunctio(job?.createdAt) === 0 ? "Today" : `${daysAgoFunctio(job?.createdAt)}`} days ago</p>
        <Button  className="rounded-full border" size="icone"><Bookmark/></Button>
        <div className='flex items-center gap-2 my-2'>
          <Button>

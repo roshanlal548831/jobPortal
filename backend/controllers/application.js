@@ -16,6 +16,8 @@ export const applyjob = async (req,res) => {
         };
         // check if the user has alredy applied for job
         const existingApplication = await Application.findOne({job:jobId,applicant:userId});
+        console.log(existingApplication)
+
         if(existingApplication){
             return res.status(400).json({
                 message:"You have already  allied for job",
