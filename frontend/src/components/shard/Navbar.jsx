@@ -39,9 +39,21 @@ const Navbar = () => {
    
       <div className='flex items-center gap-4'>
            <ul className='flex font-medium gap-5'>
-               <li><Link to="/">Home</Link></li>
-               <li><Link to="/jobs">Jobs</Link></li>
-               <li><Link to="/browse">Browse</Link></li>
+            {
+              user && user.userData.role === "recruiter" ? (
+                <>
+                  <li><Link to="/admin/companies">Companies</Link></li>
+                  <li><Link to="/admin/jobs">Jobs</Link></li>
+                </>
+              ) 
+              :
+              <>
+                 <li><Link to="/">Home</Link></li>
+                 <li><Link to="/jobs">Jobs</Link></li>
+                 <li><Link to="/browse">Browse</Link></li>
+              </>
+            }
+              
            </ul>
           {
             !user ? (
@@ -70,8 +82,15 @@ const Navbar = () => {
                    </div>
                    <div className='flex flex-col gap-3 text-gray-600 my-2'>
                        <div className='flex w-fit items-center gap-2 cursor-pointer'>
-                           <User2/>
-                            <Link to={`/profile`}><Button variant="link">View profile</Button></Link>
+                          
+                           {
+                            user && user.userData.role !== "recruiter"?(
+                              <>
+                              <User2/>
+                               <Link to={`/profile`}><Button variant="link">View profile</Button></Link>
+                              </>
+                            ): ""
+                           }
                        </div>
                        <div className='flex w-fit items-center gap-2 cursor-pointer'>
                          <LogOut/>
