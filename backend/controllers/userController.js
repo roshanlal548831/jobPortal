@@ -41,7 +41,7 @@ export const  register = async(req,res) =>{
         password:hashPassword,
         role,
         profile:{
-            profilePhoto:cloudResponse.secure_url
+            profilePhoto:cloudResponse?.secure_url
         }
      })
 
@@ -60,7 +60,7 @@ export const  register = async(req,res) =>{
         email:userdata.email,
         phoneNumber:userdata.phoneNumber,
         role:userdata.role,
-        profile:userdata.profile
+        profile:userdata?.profile
        }
     
       
