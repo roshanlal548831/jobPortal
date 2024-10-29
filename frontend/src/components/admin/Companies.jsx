@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../shard/Navbar'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import CompaniesTable from './CompaniesTable'
 import { useNavigate } from 'react-router-dom'
+import UseGetAllCompany from '@/hooks/UseGetAllCompany'
+import { useDispatch } from 'react-redux'
+import { setSearchCompanyByText } from '@/redux/companySlice/companySlice'
 
 const Companies = () => {
-  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  UseGetAllCompany();
+
+  const[input,setInput] = useState("");
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    dispatch(setSearchCompanyByText(input));
+  },[input]);
+
   return (
     <div>
        <Navbar/>
@@ -15,9 +30,10 @@ const Companies = () => {
             <Input type="text" 
                    name="email"
                    placeholder="Filter by name"
-                   className="rounded-xl w-36 border border-gray-300 placeholder-gray-400 font-medium"
+                   className="rounded-xl w-9 border border-gray-300 placeholder-gray-400 font-medium"
+                   onChange={(e)=> setInput(e.target.value)}
                    />
-                 <Button onClick={()=> navigate("/admin/companies/create")} className="my-2 border hover:bg-black">New Company</Button>  
+                 <Button onClick={()=> navigate("/admin/companies/create")} className="my-2 border hover:bg-[#ebe6e6]">New Company</Button>  
            </div>
            <CompaniesTable/>
        </div>

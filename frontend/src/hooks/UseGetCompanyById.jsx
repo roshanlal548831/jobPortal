@@ -8,13 +8,12 @@ const UseGetCompanyById = (companyId) => {
   useEffect(()=>{
     const fetchSingleCompany = async ()=>{
         try {
-            const res = await axios.get(`/api/v1/company/get:/${companyId}`);
-            
+            const res = await axios.get(`/api/v1/company/get/${companyId}`);
               if(res.data.success){
                 dispatch(setSigleCompany(res.data.company))
               }
         } catch (error) {
-            console.log(error)
+            console.log("this is error ",error)
         }
     }
     fetchSingleCompany()

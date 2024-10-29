@@ -39,7 +39,6 @@ export const registeCompanyr = async(req,res) =>{
 export const getCompany = async(req,res)=>{
     try {
         const userId = await req.id;
-        console.log(userId)
         const companies = await Company.find({userId:userId}); // logged in user id
 
         if(!companies){
@@ -79,7 +78,7 @@ export const getCompanyById  = async(req,res)=>{
         })
 
     } catch (error) {
-        console.log(error)
+        console.log("this i serror dayat =. ",error)
         
     }
 }

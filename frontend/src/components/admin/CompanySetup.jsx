@@ -8,13 +8,14 @@ import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import { useSelector } from 'react-redux'
+import UseGetCompanyById from '@/hooks/UseGetCompanyById'
 
 const CompanySetup = () => {
-
   const params = useParams()
+  UseGetCompanyById(params.id)
   const navigate = useNavigate()
+
   const {singleCompany} = useSelector(store => store.company);
-  console.log(singleCompany)
 
   const[loading,setLoading] = useState(false)
 
@@ -149,8 +150,8 @@ const CompanySetup = () => {
 
           </div>
           {
-              loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-red-600 font-bold'>Please wait </h1></button>:
-              <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Login</button>
+              loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-black font-bold'>Please wait </h1></button>:
+              <button  type="submit" className="bg-[#050505] text-white hover:bg-[#0e0d0d] w-full h-9">Update</button>
                } 
         </form>
      </div>
