@@ -5,3 +5,16 @@ esending order mongodb learn
 cloudinary => data uri
 learn => destucacharing 
 7 :1
+
+
+
+
+
+
+MONGO_URI = mongodb+srv://roshanlal160405:a0FZ7AQwqWVJE9nG@cluster0.junx2.mongodb.net/jodportal
+PORT = 8000
+SECRET_KEY = lskdjfdksfdksfhkjdfdskjfhdsklfhdskfj
+
+CLOUD_NAME =  dma1sanje
+API_KEY = 941385521334789
+API_SECRET = hVB1ZY_LAgcMFCWYA5LNEChOKXk

@@ -2,24 +2,22 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../shard/Navbar'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
-import CompaniesTable from './CompaniesTable'
 import { useNavigate } from 'react-router-dom'
-import UseGetAllCompany from '@/hooks/UseGetAllCompany'
+import UseGetAlladminJobs from '@/hooks/UseGetAllAdminJobs'
 import { useDispatch } from 'react-redux'
-import { setSearchCompanyByText } from '@/redux/companySlice/companySlice'
+import AdminJobsTable from './AdminJobsTable'
+import { setSearchJobBytext } from '@/redux/adminJobs/adminJobsSlice'
 
-const Companies = () => {
+const Jobs = () => {
+
+  UseGetAlladminJobs()
 
   const dispatch = useDispatch()
-
-  UseGetAllCompany();
-
   const[input,setInput] = useState("");
 
   const navigate = useNavigate();
-
   useEffect(()=>{
-    dispatch(setSearchCompanyByText(input));
+    dispatch(setSearchJobBytext(input));
   },[input]);
 
   return (
@@ -32,12 +30,12 @@ const Companies = () => {
                    className="rounded-xl w-9 border border-gray-300 placeholder-gray-400 font-medium"
                    onChange={(e)=> setInput(e.target.value)}
                    />
-                 <Button onClick={()=> navigate("/admin/companies/create")} className="my-2 border hover:bg-[#ebe6e6]">New Company</Button>  
+                 <Button onClick={()=> navigate("/admin/companies/create")} className="my-2 border hover:bg-[#ebe6e6]">New Job</Button>  
            </div>
-           <CompaniesTable/>
+           <AdminJobsTable/>
        </div>
     </div>
   )
 }
 
-export default Companies
+export default Jobs
