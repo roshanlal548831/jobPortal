@@ -2,7 +2,6 @@ import React from 'react'
 import { Badge } from './ui/badge'
 
 const LatestJobCards = ({job}) => {
-  console.log(job)
   return (
     <div>
       <div className='p-5 rounded-md shadow-xl bg-white border border-gray-200 '>

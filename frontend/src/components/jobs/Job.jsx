@@ -4,9 +4,9 @@ import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Badge } from '../ui/badge'
 import { useNavigate } from 'react-router-dom'
+import UseGetAllJobs from '@/hooks/UseGetAllJobs'
 
 const Job = ({job}) => {
-
   const daysAgoFunctio = (mongdbTime) => {
      const createdAt = new Date(mongdbTime);
      const currentTime = new Date();
@@ -29,7 +29,7 @@ const Job = ({job}) => {
        <div className='flex items-center gap-2 my-2'>
          <Button>
            <Avatar>
-            <AvatarImage src="https://www.src.org/web/img/SRC_logo_blue.png" alt="@shadcn" />
+            <AvatarImage src={job?.company?.logo} alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
            </Avatar>
          </Button>

@@ -30,7 +30,7 @@ const Jobs = () => {
                    className="rounded-xl w-9 border border-gray-300 placeholder-gray-400 font-medium"
                    onChange={(e)=> setInput(e.target.value)}
                    />
-                 <Button onClick={()=> navigate("/admin/companies/create")} className="my-2 border hover:bg-[#ebe6e6]">New Job</Button>  
+                 <Button onClick={()=> navigate("/admin/job/create")} className="my-2 border hover:bg-[#ebe6e6]">New Job</Button>  
            </div>
            <AdminJobsTable/>
        </div>
