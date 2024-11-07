@@ -1,9 +1,12 @@
 import React from 'react'
 import { Badge } from './ui/badge'
+import { Button } from './ui/button'
+import { useNavigate } from 'react-router-dom'
 
 const LatestJobCards = ({job}) => {
+  const navigate = useNavigate()
   return (
-    <div>
+    <div onClick={() => navigate(`/description/${job?._id}`)}>
       <div className='p-5 rounded-md shadow-xl bg-white border border-gray-200 '>
         <div>
          <h1 className='font-medium text-lg '>{job?.company?.name}</h1>
@@ -17,6 +20,8 @@ const LatestJobCards = ({job}) => {
                 <Badge className={"text-[#F83002] font-bold"} variant="ghost">{job?.jobType}</Badge>
                 <Badge className={"text-[#720B97] font-bold"} variant="ghost">{job?.salary} LPA</Badge>
             </div>
+
+            <Button className="mt-2" onClick={() => navigate(`/description/${job?._id}`)}>Details</Button>
          </div>
       </div>
     </div>

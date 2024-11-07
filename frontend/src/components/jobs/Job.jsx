@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button } from '../ui/button'
 import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Badge } from '../ui/badge'
 import { useNavigate } from 'react-router-dom'
 import UseGetAllJobs from '@/hooks/UseGetAllJobs'
+import { useDispatch } from 'react-redux'
+import { setSearchQuiry } from '@/redux/job/jobSlice'
 
 const Job = ({job}) => {
+  UseGetAllJobs()
   const daysAgoFunctio = (mongdbTime) => {
      const createdAt = new Date(mongdbTime);
      const currentTime = new Date();
@@ -20,7 +23,7 @@ const Job = ({job}) => {
   
 
   return (
-    <div className='p-5 rounded-md shadow-xl bg-white border-gray-300'>
+    <div onClick={() => navigate(`/description/${job?._id}`)}  className='p-5 rounded-md cursor-pointer shadow-xl bg-white border-gray-300'>
         <div className='flex items-center justify-center'>
 
         </div>
@@ -48,7 +51,7 @@ const Job = ({job}) => {
                 <Badge className={"text-[#720B97] font-bold"} variant="ghost">{job?.salary} LPA</Badge>
             </div>
             <div className='flex items-center gap-4 mt-4'>
-            <Button onClick={() => navigate(`description/${job?._id}`)}>Details</Button>
+            <Button onClick={() => navigate(`/description/${job?._id}`)}>Details</Button>
             <Button className="bg-[#720B97] text-white rounded-md">Save For Latter</Button>
             </div>
     </div>

@@ -3,6 +3,7 @@ import authSlice from "./authSlice"
 import jobSlice from "./job/jobSlice"
 import companySlice from "./companySlice/companySlice"
 import adminJobsSlice from "./adminJobs/adminJobsSlice"
+import adminApplicantsSlice from "./adminJobs/adminApplicantsSlice"
 
 
 
@@ -29,7 +30,8 @@ const persistConfig = {
     auth:authSlice,
      job:jobSlice,
      company:companySlice,
-     adminJobs:adminJobsSlice
+     adminJobs:adminJobsSlice,
+     applicant:adminApplicantsSlice
   });
 
   const persistedReducer = persistReducer(persistConfig, rootReducer)

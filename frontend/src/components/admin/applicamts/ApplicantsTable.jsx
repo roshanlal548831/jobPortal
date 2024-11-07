@@ -8,14 +8,35 @@ import {
     TableHeader,
     TableRow, 
 } from '@/components/ui/table';
+import axios from 'axios';
 import { MoreHorizontal } from 'lucide-react';
-
-const shortlistingStatus = ["Accept","Rejact"]
-
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'sonner';
+
+const shortlistingStatus = ["accepted","rejected"]
 
 
 const ApplicantsTable = () => {
+
+ const {allApplicants} = useSelector(store => store.applicant);
+ const navigate = useNavigate();
+
+ const statusHandler = async (status,userId) => {
+  console.log(status)
+     try {
+      const res = await axios.post(`/api/v1/applicatios/status/${userId}/update`,{status});
+      if(res.data.success){
+        navigate("/admin/jobs")
+        toast.success(res.data.message)
+      }
+         console.log("this is datat",res)
+     } catch (error) {
+       toast.error(error.response.data.message)
+      
+     }
+ }
 
   return (
     <div>
@@ -32,32 +53,37 @@ const ApplicantsTable = () => {
     </TableRow>
   </TableHeader>
   <TableBody>
-    <tr>
-      <TableCell >INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell >$250.00</TableCell>
-      <TableCell >$250.00</TableCell>
-      <TableCell className="text-right">
-        <Popover>
-             <PopoverTrigger>
-                  <MoreHorizontal/>
-                  <PopoverContent className="w-32">
-                  {
-                       shortlistingStatus.map((status,i)=>{
-                           return(
-                               <div key={i} className='gap-2'>
-                                   <span>{status}</span>
-                               </div>
-                           )
-                       })
-                     }
-                  </PopoverContent>
-             </PopoverTrigger>
-        </Popover>
-      
-      </TableCell>
-    </tr>
+    {
+      allApplicants && allApplicants?.application.map((item,i)=>(
+        <tr>
+        <TableCell >{item?.applicant?.fullname}</TableCell>
+        <TableCell>{item?.applicant?.email}</TableCell>
+        <TableCell>{item?.applicant?.phoneNumber}</TableCell>
+        <TableCell > <a target='blank'  href={item?.applicant?.profile?.resume} className='text-blue-500 w-full hover:underline'>{item?.applicant.profile.resumeOriginalName ? item?.applicant.profile.resumeOriginalName : "No resume"}</a></TableCell>
+        <TableCell >{item?.applicant?.createdAt.split("T")[0]}</TableCell>
+        <TableCell className="text-right">
+          <Popover>
+               <PopoverTrigger>
+                    <MoreHorizontal/>
+                    <PopoverContent className="w-32">
+                    {
+                         shortlistingStatus.map((status,i)=>{
+                             return(
+                                 <div onClick={()=>statusHandler(status,item?._id)} key={i} className='gap-5 m-4 cursor-pointer'>
+                                     <span>{status}</span>
+                                 </div>
+                             )
+                         })
+                       }
+                    </PopoverContent>
+               </PopoverTrigger>
+          </Popover>
+        
+        </TableCell>
+      </tr>
+      ))
+    }
+    
   </TableBody>
 </Table>
     </div>

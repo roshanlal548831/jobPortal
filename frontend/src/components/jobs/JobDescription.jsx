@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import Navbar from '../shard/Navbar';
@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'sonner';
-import { setSingleJob } from '@/redux/job/jobSlice';
+import { setSearchQuiry, setSingleJob } from '@/redux/job/jobSlice';
 
 const JobDescription = () => {
   const {singleJob} = useSelector(store => store.job);
@@ -21,7 +21,7 @@ const JobDescription = () => {
   const userid = user.userData?._id;
   const isIntiallyApplied = singleJob?.application?.some(application => application.applicant === userid)|| false
   
-  const [isApplied,setIsapplied] = useState(isIntiallyApplied)
+  const [isApplied,setIsapplied] = useState(isIntiallyApplied);
   
   const jobApply = async() => {
     try {
@@ -35,6 +35,8 @@ const JobDescription = () => {
     }
   }
   UseGetSingleJobs(jobId,setIsapplied);
+
+  
   return (
     <>
     <Navbar/>
