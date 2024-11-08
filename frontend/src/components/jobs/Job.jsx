@@ -10,6 +10,7 @@ import { setSearchQuiry } from '@/redux/job/jobSlice'
 
 const Job = ({job}) => {
   UseGetAllJobs()
+  
   const daysAgoFunctio = (mongdbTime) => {
      const createdAt = new Date(mongdbTime);
      const currentTime = new Date();

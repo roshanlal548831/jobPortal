@@ -18,7 +18,9 @@ export const  register = async(req,res) =>{
         let cloudResponse;
         if(file){
             const fileUri = getDataUri(file);
-             cloudResponse = await cloudinary.uploader.upload(fileUri?.content);
+             cloudResponse = await cloudinary.uploader.upload(fileUri.content,{
+                resource_type: 'raw',
+             });
         }
         
       
@@ -205,7 +207,7 @@ export const updateProfile = async(req,res) =>{
             role:user.role,
             profile:user.profile
            }
-        
+        console.log("this is update userData",user)
            return res.status(201).json({
             message : "Profile updated successfully",
             success:true,

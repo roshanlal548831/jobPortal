@@ -29,7 +29,7 @@ const AppiedJobTable = () => {
                    <TableCell>{item?.createdAt.split("T")[0]}</TableCell>
                    <TableCell>{item?.job?.title}</TableCell>
                    <TableCell>{item?.job?.company?.name}</TableCell>
-                   <TableCell className="text-right"><Badge className={`${item?.status === "rejected"? "bg-red-400" : item?.status === "pending" ? "bg-gray-400" : "bg-green-400"} text-white rounded-xl`}>{item?.status}</Badge></TableCell>
+                   <TableCell className="text-right"><Badge className={`${item?.status === "rejected"? "bg-red-400" : item?.status === "pending" ? "bg-gray-500" : "bg-green-400"} text-white rounded-xl`}>{item?.status}</Badge></TableCell>
                </TableRow>
             )
            })

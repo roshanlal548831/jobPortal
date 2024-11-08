@@ -1,3 +1,4 @@
+import { Company } from "../model/companyModel.js";
 import { Job } from "../model/jobModel.js";
 // admin will post a job
 export const postJob = async(req,res)=>{
@@ -11,6 +12,14 @@ export const postJob = async(req,res)=>{
                 success:false
             })
         };
+
+        const findCompany = await Company.findOne({userId:userId})
+
+        if(!findCompany){
+            return res.status(400).json({
+                message:"Please create company"
+            })
+        }
 
         const job = Job.create({
             title,

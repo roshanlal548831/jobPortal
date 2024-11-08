@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { Label } from '../ui/label'
 import { data } from 'autoprefixer'
+import { useDispatch } from 'react-redux'
+import { setSearchQuiry } from '@/redux/job/jobSlice'
 
 const filterData = [
   {
@@ -10,7 +12,7 @@ const filterData = [
   },
   {
      filterType: "Industry",
-     array:["Frontend developer","backend developer","Fullstack developer"]
+     array:["Frontend developer","backend ","Fullstack developer"]
   },
   {
      filterType: "Salry",
@@ -20,14 +22,16 @@ const filterData = [
 
 const Filter = () => {
     const [selectedValue,setSelectedValue] = useState("");
+    const dispatch = useDispatch()
 
     const changehandler = (v) => {
         setSelectedValue(v)
     };
 
       useEffect(()=>{
-        console.log(selectedValue);
+        dispatch(setSearchQuiry(selectedValue))
       },[selectedValue])
+
 
   return (
     <div>

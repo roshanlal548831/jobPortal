@@ -132,7 +132,7 @@ const handleSubmit = async(e) => {
                      className="col-span-3 border-spacing-2 shadow-xl font-semibold text-gray-900"
                      placeholder="Update your bio"
                      name="file"
-                     // accept="application/pdf"
+                     accept="application/pdf"
                      value={input.profilePhoto}
                      onChange={changeFile}
                      />
