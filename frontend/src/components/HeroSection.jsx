@@ -4,6 +4,7 @@ import { Button } from './ui/button'
 import { useDispatch } from 'react-redux';
 import { setSearchQuiry } from '@/redux/job/jobSlice';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const HeroSection = () => {
 

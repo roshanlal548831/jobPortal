@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
-import { Button } from '../ui/button'
-import { Bookmark } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { Badge } from '../ui/badge'
-import { useNavigate } from 'react-router-dom'
-import UseGetAllJobs from '@/hooks/UseGetAllJobs'
+import React, { useEffect } from 'react';
+import { Button } from '../ui/button';
+import { Bookmark } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Badge } from '../ui/badge';
+import { useNavigate } from 'react-router-dom';
+import UseGetAllJobs from '@/hooks/UseGetAllJobs';
 import { useDispatch } from 'react-redux'
 import { setSearchQuiry } from '@/redux/job/jobSlice'
+import { motion } from 'framer-motion';
 
 const Job = ({job}) => {
   UseGetAllJobs()
@@ -24,7 +25,12 @@ const Job = ({job}) => {
   
 
   return (
-    <div onClick={() => navigate(`/description/${job?._id}`)}  className='p-5 rounded-md cursor-pointer shadow-xl bg-white border-gray-300'>
+    <motion.div
+    initial={{opacity:0,x:100}}
+    animate={{opacity:1,x:0}}
+    exit={{opacity:0,x:-100}}
+    transition={{duration: 0.3}}
+    onClick={() => navigate(`/description/${job?._id}`)}  className='p-5 rounded-md cursor-pointer shadow-xl bg-white border-gray-300'>
         <div className='flex items-center justify-center'>
 
         </div>
@@ -55,7 +61,7 @@ const Job = ({job}) => {
             <Button onClick={() => navigate(`/description/${job?._id}`)}>Details</Button>
             <Button className="bg-[#720B97] text-white rounded-md">Save For Latter</Button>
             </div>
-    </div>
+    </motion.div>
   )
 }
 

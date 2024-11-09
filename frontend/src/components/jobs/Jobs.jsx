@@ -3,6 +3,8 @@ import Navbar from '../shard/Navbar'
 import Filter from './Filter'
 import Job from './Job'
 import { useSelector } from 'react-redux'
+import { motion } from 'framer-motion'
+
 const Jobs = () => {
 
   const {allJobs,searchQuiry} = useSelector(store => store.job);
@@ -39,9 +41,15 @@ const Jobs = () => {
                   {
                     filterJobs.map((item,i)=>{
                       return(
-                        <div key={i}>
+                        <motion.div
+                        initial={{opacity:0,x:100}}
+                        animate={{opacity:1,x:0}}
+                        exit={{opacity:0,x:-100}}
+                        transition={{duration: 0.3}}
+                        key={i}>
+                         
                            <Job job={item}/>
-                        </div>
+                        </motion.div>
                       )
                     }) 
                   }

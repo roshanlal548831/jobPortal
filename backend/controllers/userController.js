@@ -54,7 +54,7 @@ export const  register = async(req,res) =>{
     
 
 
-      const token = await jwt.sign(tokenData,process.env.SECRET_KEY,{expiresIn:"1d"})
+      const token = await jwt.sign(tokenData,process.env.SECRET_KEY)
 
       const  userData =  {
         _id :userdata._id,
@@ -66,7 +66,7 @@ export const  register = async(req,res) =>{
        }
     
       
-      return res.status(201).cookie("token",token,{maxAge:1*24*60*60*1000,httpOnly:true,sameSite:"strict"}).json({
+      return res.status(201).cookie("token",token,{httpOnly:true,sameSite:"strict"}).json({
         message:"Account created successfully",
         userData,
         success:true
@@ -119,7 +119,7 @@ export const login = async(req,res) =>{
     userId:user._id
    }
 
-   const token = await jwt.sign(tokenData,process.env.SECRET_KEY,{expiresIn:"1d"})
+   const token = await jwt.sign(tokenData,process.env.SECRET_KEY)
 
    const  userData = {
     _id :user._id,
@@ -130,7 +130,7 @@ export const login = async(req,res) =>{
     profile:user.profile
    }
 
-   return res.status(200).cookie("token",token,{maxAge:1*24*60*60*1000,httpOnly:true}).json({
+   return res.status(200).cookie("token",token,{httpOnly:true}).json({
       message:`Welcome back ${user.fullname}`,
       userData,
       success:true
@@ -169,7 +169,6 @@ export const updateProfile = async(req,res) =>{
         // const str = skills.join()
         const skillsArray = skills.split(',');
         
-        console.log("this is skiills =>",skillsArray)
 
         const userId = await req.id; // middleware authtication
         let user = await User.findById({_id:userId});

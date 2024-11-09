@@ -14,8 +14,8 @@ const UpdatedProfileDialog = ({open,setOpen}) => {
      const dispatch = useDispatch();
 
      const {user} = useSelector(store => store.auth);
-
      const [loading,setLoading] = useState(false);
+     
 
      const[input,setInput] = useState({
         fullname:user?.userData?.fullname,
@@ -23,11 +23,16 @@ const UpdatedProfileDialog = ({open,setOpen}) => {
         phoneNumber:user?.userData?.phoneNumber,
         bio:user?.userData?.profile?.bio,
         skills:user.userData?.profile?.skills.map(skill => skill),
-        file:user.userData?.profile?.resume
+        file:"",
+        profile:""
      })
     
 
 const changeFile = (e) =>{
+   const file = e.target.files?.[0]
+    if(file)setInput({...input,file:file});
+}
+const changeProfile = (e) =>{
    const file = e.target.files?.[0]
     if(file)setInput({...input,file:file});
 }
@@ -42,7 +47,8 @@ const handleSubmit = async(e) => {
    formData.append("skills",input.skills);
    if(input.file){
       formData.append("file",input.file)
-    }
+    };
+
     try {
        
       setLoading(true)
@@ -125,18 +131,28 @@ const handleSubmit = async(e) => {
                      onChange={(e) => setInput({...input,skills:e.target.value})}
                      />
                     </div>
+
                    <div className='grid grid-cols-4 items-center gap-4'>
                     <Label htmlFor="file" className="text-right">Resume</Label>
                      <Input type="file" 
                      id="file"
                      className="col-span-3 border-spacing-2 shadow-xl font-semibold text-gray-900"
-                     placeholder="Update your bio"
                      name="file"
                      accept="application/pdf"
-                     value={input.profilePhoto}
                      onChange={changeFile}
                      />
                     </div>
+                  
+                   {/* <div className='grid grid-cols-4 items-center gap-4'>
+                    <Label htmlFor="file" className="text-right">Profile Photo</Label>
+                     <Input type="file" 
+                     id="file"
+                     className="col-span-3 border-spacing-2 shadow-xl font-semibold text-gray-900"
+                     name="file"
+                     accept="image/*"
+                     onChange={changeProfile}
+                     />
+                    </div> */}
                   
                     <DialogFooter>
             {

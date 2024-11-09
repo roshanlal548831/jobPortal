@@ -18,7 +18,7 @@ const JobDescription = () => {
   const jobId = params.id
 
   
-  const userid = user.userData?._id;
+  const userid = user?.userData?._id;
   const isIntiallyApplied = singleJob?.application?.some(application => application.applicant === userid)|| false
   
   const [isApplied,setIsapplied] = useState(isIntiallyApplied);

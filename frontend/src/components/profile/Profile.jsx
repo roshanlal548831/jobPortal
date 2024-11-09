@@ -27,7 +27,7 @@ const {user} = useSelector(store => store.auth)
           <div className='flex justify-between'>
          <div className='flex items-center gap-4'>
           <Avatar className="h-24 w-24">
-              <AvatarImage src="https://github.com/shadcn.png"/>
+              <AvatarImage src={user?.userData?.profile?.profilePhoto}/>
               <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div>
@@ -66,7 +66,6 @@ const {user} = useSelector(store => store.auth)
                 {
                   isResume ? 
                   <>
-                  {/* <embed src={user.userData.profile.resume} width="100%" height="600px" type="application/pdf" /> */}
                   <a target='blank'  href={user.userData.profile.resume} className='text-blue-500 w-full hover:underline'>{user.userData.profile.resumeOriginalName}</a>
                   </>
                   
