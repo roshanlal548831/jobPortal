@@ -17,19 +17,26 @@ const JobDescription = () => {
   const params = useParams()
   const jobId = params.id
 
+  console.log(user.userData.profile)
   
   const userid = user?.userData?._id;
   const isIntiallyApplied = singleJob?.application?.some(application => application.applicant === userid)|| false
   
   const [isApplied,setIsapplied] = useState(isIntiallyApplied);
   
+  
+
   const jobApply = async() => {
     try {
-      const res = await axios.get(`/api/v1/applicatios/apply/${jobId}`);
-      setIsapplied(true) //UpDate the local state
-      const updateSingleJob = {...singleJob,application:[...singleJob.application,{applicant:user.userData?._id}]};
-      dispatch(setSingleJob(updateSingleJob))
-      toast.success(res.data.message)
+       if(!user.userData.profile.resume || !user.userData.profile.skills.length === 0 ){
+         toast.error("Update your Profile")
+       }else{
+        const res = await axios.get(`/api/v1/applicatios/apply/${jobId}`);
+        setIsapplied(true) //UpDate the local state
+        const updateSingleJob = {...singleJob,application:[...singleJob.application,{applicant:user.userData?._id}]};
+        dispatch(setSingleJob(updateSingleJob))
+        toast.success(res.data.message)
+       }
     } catch (error) {
       toast.error(error.response.data.message)
     }

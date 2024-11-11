@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
     Table,
@@ -28,7 +29,6 @@ const ApplicantsTable = () => {
      try {
       const res = await axios.post(`/api/v1/applicatios/status/${userId}/update`,{status});
       if(res.data.success){
-        navigate("/admin/jobs")
         toast.success(res.data.message)
       }
          console.log("this is datat",res)
@@ -56,7 +56,19 @@ const ApplicantsTable = () => {
     {
       allApplicants && allApplicants?.application.map((item,i)=>(
         <tr>
-        <TableCell >{item?.applicant?.fullname}</TableCell>
+          {
+            console.log(item)
+          }
+        <TableCell >
+           <div className='flex items-center gap-4'>
+           <Avatar>
+                <AvatarImage src={item?.applicant.profile.profilePhoto} alt="@shadcn" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <h1 className='font-bold'>{item?.applicant?.fullname}</h1>
+           
+           </div>
+          </TableCell>
         <TableCell>{item?.applicant?.email}</TableCell>
         <TableCell>{item?.applicant?.phoneNumber}</TableCell>
         <TableCell > <a target='blank'  href={item?.applicant?.profile?.resume} className='text-blue-500 w-full hover:underline'>{item?.applicant.profile.resumeOriginalName ? item?.applicant.profile.resumeOriginalName : "No resume"}</a></TableCell>
