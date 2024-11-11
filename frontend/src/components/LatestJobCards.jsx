@@ -29,10 +29,7 @@ const LatestJobCards = ({job}) => {
          </div>
        </div>
 
-        <div>
-         <h1 className='font-medium text-lg '>{job?.company?.name}</h1>
-           <p className='text-sm text-gray-500'>{job?.location}</p>
-        </div>
+      
          <div>
             <h1 className='font-bold text-lg my-2'>{job?.title}</h1>
             <p className='text-sm text-gray-600'>{job?.description}</p>
