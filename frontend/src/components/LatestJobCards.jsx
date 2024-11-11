@@ -3,6 +3,7 @@ import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 
 const LatestJobCards = ({job}) => {
   const navigate = useNavigate()
@@ -14,6 +15,20 @@ const LatestJobCards = ({job}) => {
     transition={{duration: 0.3}}
     onClick={() => navigate(`/description/${job?._id}`)}>
       <div className='p-5 rounded-md shadow-xl bg-white border border-gray-200 '>
+
+      <div className='flex items-center gap-2 my-2'>
+         <Button>
+           <Avatar>
+            <AvatarImage src={job?.company?.logo} alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+           </Avatar>
+         </Button>
+         <div>
+            <h1 className='font-medium text-lg'>{job?.company?.name}</h1>
+            <p className='text-sm text-gray-500'>{job?.location}</p>
+         </div>
+       </div>
+
         <div>
          <h1 className='font-medium text-lg '>{job?.company?.name}</h1>
            <p className='text-sm text-gray-500'>{job?.location}</p>

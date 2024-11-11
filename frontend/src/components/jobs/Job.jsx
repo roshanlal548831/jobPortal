@@ -4,13 +4,9 @@ import { Bookmark } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
 import { useNavigate } from 'react-router-dom';
-import UseGetAllJobs from '@/hooks/UseGetAllJobs';
-import { useDispatch } from 'react-redux'
-import { setSearchQuiry } from '@/redux/job/jobSlice'
 import { motion } from 'framer-motion';
 
 const Job = ({job}) => {
-  UseGetAllJobs()
   
   const daysAgoFunctio = (mongdbTime) => {
      const createdAt = new Date(mongdbTime);

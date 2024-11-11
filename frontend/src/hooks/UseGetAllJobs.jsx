@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 const UseGetAllJobs = () => {
     const dispatch = useDispatch()
     const {searchQuiry} = useSelector(store => store.job);
-    console.log("this is search quiry ==",searchQuiry)
   useEffect(()=>{
     const fetchAllJobs = async ()=>{
         try {

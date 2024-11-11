@@ -4,13 +4,13 @@ import Filter from './Filter'
 import Job from './Job'
 import { useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
+import UseGetAllJobs from '@/hooks/UseGetAllJobs'
 
 const Jobs = () => {
+  UseGetAllJobs();
 
   const {allJobs,searchQuiry} = useSelector(store => store.job);
   const[filterJobs,setFilterJobs] = useState(allJobs);
-
-
 
   useEffect(()=>{
           if(searchQuiry){
@@ -35,7 +35,7 @@ const Jobs = () => {
                 <Filter/>
               </div> 
             {
-            allJobs.length < 0 ? <span>Job not found</span> :(
+            filterJobs.length < 0 ? <span>Job not found</span> :(
               <div className='flex-1 h-[88v] overflow-auto pb-5'>
                  <div className='grid grid-cols-3 gap-4'>
                   {

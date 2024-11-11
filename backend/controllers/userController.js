@@ -15,6 +15,14 @@ export const  register = async(req,res) =>{
                 success:false
             })
         };
+
+        if(!file){
+            return res.status(400).json({
+                message:"Profile photo is missing",
+                success:false
+            })
+        }
+
         let cloudResponse;
         if(file){
             const fileUri = getDataUri(file);

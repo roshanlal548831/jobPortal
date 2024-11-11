@@ -7,14 +7,16 @@ import UseGetAllJobs from '@/hooks/UseGetAllJobs'
 
 
 const Browse = () => {
-  UseGetAllJobs()
+  UseGetAllJobs();
   const {allJobs} = useSelector(store => store.job);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  
   useEffect(()=>{
-       return () => {
-        dispatch(setSearchQuiry(""))
-       }
+   return ()=>{
+       dispatch(setSearchQuiry(""))
+   }
   },[])
+
   return (
     <div>
         <Navbar/>

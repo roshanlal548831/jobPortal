@@ -4,7 +4,6 @@ import { Job } from "../model/jobModel.js";
 export const postJob = async(req,res)=>{
     try {
         const {title,description,requirements,salary,location,jobType,experience,position,companyId} = req.body;
-        console.log("jobs data => ",title,description,requirements,salary,location,jobType,experience,position,companyId)
         const userId = req.id;
         if(!title || !description || !requirements || !salary || !location || !jobType || !experience || !position || !companyId){
             return res.status(400).json({
