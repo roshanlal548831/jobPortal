@@ -28,10 +28,8 @@ const CompanyCreate = () => {
                 const companyid = res.data.company?._id;
                 navigate(`/admin/companies/${companyid}`)
             }
-            console.log(res)
         } catch (error) {
             toast.error(error.response.data.message)
-            console.log(error)
         }
     }
 

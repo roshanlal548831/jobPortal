@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { toast } from 'sonner'
 
 const UseGetAllApplicantsUser = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const UseGetAllApplicantsUser = () => {
                 dispatch(setAllApplicants(res?.data?.job));
                 }
             } catch (error) {
-                
+                toast.error(error.response.data.message)
             }
         }
          fatchApplicantUserData()

@@ -31,7 +31,7 @@ const {user} = useSelector(store => store.auth)
               <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <div>
-              <h1 className='font-medium text-xl'>{user.userData.fullname}</h1>
+              <h1 className='font-medium text-xl'>{user?.userData?.fullname}</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eum architecto beatae!</p>
             </div>
           </div>
@@ -40,19 +40,19 @@ const {user} = useSelector(store => store.auth)
           <div className='mt-3'>
             <div className='flex items-center gap-3'>
               <Mail/>
-              <span>{user.userData.email}</span>
+              <span>{user?.userData?.email}</span>
             </div>
             <div className='flex items-center gap-3'>
             <Phone/>
-            <span>{user.userData.phoneNumber}</span>
+            <span>{user?.userData?.phoneNumber}</span>
             </div>
             
           </div>
             <div className='my-5'>
-               <h1>{user.userData.profile.bio}</h1>
+               <h1>{user?.userData?.profile?.bio}</h1>
                <div className='flex items-center gap-4 mt-2 '>
                {
-              user.userData.profile.skills.length !== 0 ?  user.userData.profile.skills.map((item,i)=>{
+              user?.userData?.profile?.skills?.length !== 0 ?  user?.userData?.profile?.skills.map((item,i)=>{
                   return(
                     <Badge className="bg-[#080505] text-[#FFFF]  rounded-xl hover:bg-black" key={i}>{item}</Badge>
                   )
@@ -66,7 +66,7 @@ const {user} = useSelector(store => store.auth)
                 {
                   isResume ? 
                   <>
-                  <a target='blank'  href={user.userData.profile.resume} className='text-blue-500 w-full hover:underline'>{user.userData.profile.resumeOriginalName}</a>
+                  <a target='blank'  href={user?.userData?.profile?.resume} className='text-blue-500 w-full hover:underline'>{user?.userData?.profile?.resumeOriginalName}</a>
                   </>
                   
                   :

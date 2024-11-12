@@ -22,7 +22,7 @@ const UpdatedProfileDialog = ({open,setOpen}) => {
         email:user?.userData?.email,
         phoneNumber:user?.userData?.phoneNumber,
         bio:user?.userData?.profile?.bio,
-        skills:user.userData?.profile?.skills.map(skill => skill),
+        skills:user?.userData?.profile?.skills.map(skill => skill),
         file:"",
         profile:""
      })

@@ -54,10 +54,8 @@ const PostJob = () => {
           toast.success(res.data.message);
           navigate("/admin/jobs")
         }
-        console.log("this is job data =>",res.data);
        } catch (error) {
         toast.error(error.response.data.message)
-        console.log(error)
        }finally{
         setLoading(false)
        }

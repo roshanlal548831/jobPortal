@@ -43,7 +43,7 @@ const appRouter = createBrowserRouter([
    },
    {
     path:`profile`,
-    element:<Profile/>
+    element:<UserProtectedRoute><Profile/></UserProtectedRoute>
    },
    {
     path:"/admin/companies",

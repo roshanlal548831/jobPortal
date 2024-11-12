@@ -51,14 +51,12 @@ const CompanySetup = () => {
     try {
       setLoading(true)
        const res = await axios.put(`/api/v1/company/update/${params.id}`,formData);
-       console.log(res)
        if(res.data.success){
          toast.success(res.data.message);
          navigate("/admin/companies");
        }
     } catch (error) {
       toast.error(error.response.data.message)
-      console.log(error)
       
     }finally{
       setLoading(false)

@@ -25,13 +25,11 @@ const ApplicantsTable = () => {
  const navigate = useNavigate();
 
  const statusHandler = async (status,userId) => {
-  console.log(status)
      try {
       const res = await axios.post(`/api/v1/applicatios/status/${userId}/update`,{status});
       if(res.data.success){
         toast.success(res.data.message)
       }
-         console.log("this is datat",res)
      } catch (error) {
        toast.error(error.response.data.message)
       
@@ -57,7 +55,6 @@ const ApplicantsTable = () => {
       allApplicants && allApplicants?.application.map((item,i)=>(
         <tr>
           {
-            console.log(item)
           }
         <TableCell >
            <div className='flex items-center gap-4'>

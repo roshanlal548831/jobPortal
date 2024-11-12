@@ -18,7 +18,6 @@ const CategoryCarousel = () => {
   const navigate = useNavigate();
 
   const searchJobhandler = (quiry) => {
-    console.log("this is quiry",quiry)
       dispatch(setSearchQuiry(quiry));
       navigate("/browse")
 

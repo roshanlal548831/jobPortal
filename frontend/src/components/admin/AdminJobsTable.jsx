@@ -40,10 +40,6 @@ const AdminJobsTable = () => {
             filterJobs.length < 0 ? <span>You haven't registred any company yet</span> :
             filterJobs?.map((job,i)=>(
                <tr key={i}>
-               {/* {
-                  console.log("this is hobs",job)
-
-               } */}
                 <>
              <TableCell>
               <div className='flex items-center gap-4'>
