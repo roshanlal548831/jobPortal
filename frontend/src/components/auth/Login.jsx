@@ -123,7 +123,7 @@ useEffect(()=>{
               loading? <button className="flex justify-center w-full h-9  items-center"> <Loader2 className='mr-2 h-4 w-4 animate-spin text-center text-[#20bdd2]'/><h1 className='text-red-600 font-bold'>Please wait </h1></button>:
               <button  type="submit" className="bg-[#ef254a] hover:bg-[#ef919f] w-full h-9">Login</button>
                } 
-               <span className='text-[#347b1e]'>Don't have an account ? <Link  className='text-[#10b4d9] underline' to="/signup">Signup</Link></span>
+               <span className='text-red-500'>Don't have an account ? <Link  className='text-[#10b4d9] underline' to="/signup">Signup</Link></span>
           </form>
       </motion.div>
     </div>
