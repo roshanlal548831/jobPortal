@@ -17,10 +17,10 @@ const JobDescription = () => {
   const params = useParams()
   const jobId = params.id
 
-  console.log(user.userData.profile)
+  console.log(user?.userData?.profile)
   
   const userid = user?.userData?._id;
-  const isIntiallyApplied = singleJob?.application?.some(application => application.applicant === userid)|| false
+  const isIntiallyApplied = singleJob?.application?.some(application => application?.applicant === userid)|| false
   
   const [isApplied,setIsapplied] = useState(isIntiallyApplied);
   
@@ -33,7 +33,7 @@ const JobDescription = () => {
        }else{
         const res = await axios.get(`/api/v1/applicatios/apply/${jobId}`);
         setIsapplied(true) //UpDate the local state
-        const updateSingleJob = {...singleJob,application:[...singleJob.application,{applicant:user.userData?._id}]};
+        const updateSingleJob = {...singleJob,application:[...singleJob?.application,{applicant:user?.userData?._id}]};
         dispatch(setSingleJob(updateSingleJob))
         toast.success(res.data.message)
        }
