@@ -52,7 +52,7 @@ const ApplicantsTable = () => {
   </TableHeader>
   <TableBody>
     {
-      allApplicants && allApplicants?.application.map((item,i)=>(
+      allApplicants && allApplicants?.application?.map((item)=>(
         <tr>
           {
           }
