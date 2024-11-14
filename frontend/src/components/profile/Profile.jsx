@@ -32,7 +32,7 @@ const {user} = useSelector(store => store.auth)
           </Avatar>
           <div>
               <h1 className='font-medium text-xl'>{user?.userData?.fullname}</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum eum architecto beatae!</p>
+              <p>{user?.userData?.profile?.bio}</p>
             </div>
           </div>
           <Button className="text-right" onClick={()=> setOpen(true)}><Pen/></Button>
@@ -74,7 +74,7 @@ const {user} = useSelector(store => store.auth)
                 }
             </div>
           </div>
-            <div className='max-w-4xl mx-auto bg-white rounded-2xl '>
+            <div className='max-w-4xl mx-auto bg-white rounded-2xl md:px-0 sm:px-2'>
              <h1 className='font-bold text-lg my-5'>Application table</h1>
                <AppiedJobTable/>
             </div>

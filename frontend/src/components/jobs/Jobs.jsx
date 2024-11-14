@@ -26,18 +26,18 @@ const Jobs = () => {
           }
   },[allJobs,searchQuiry,])
   return (
-    <div>
+    <div className='sm:p-2 md:p-0'>
         <Navbar/>
 
         <div className='max-w-7xl mx-auto mt-5'>
            <div className='flex gap-5'>    
-             <div className='w-20% '>
+             <div className='w-20% sm:hidden md:block'>
                 <Filter/>
               </div> 
             {
             filterJobs.length < 0 ? <span>Job not found</span> :(
               <div className='flex-1 h-[88v] overflow-auto pb-5'>
-                 <div className='grid grid-cols-3 gap-4'>
+                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
                   {
                     filterJobs.map((item,i)=>{
                       return(

@@ -10,9 +10,9 @@ const Applicants = () => {
   const {allApplicants} = useSelector(store => store.applicant);
   
   return (
-    <div>
+    <div className='sm:px-3 md:mx-0'>
       <Navbar/>
-       <div className='max-w-7xl mx-auto'>
+       <div className='max-w-7xl mx-auto mt-5'>
            <h1 className='font-bold'>Applicants {`(${allApplicants?.application?.length})`}</h1>
            <ApplicantsTable/>
        </div>

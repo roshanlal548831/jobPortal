@@ -68,8 +68,8 @@ useEffect(()=>{
        animate={{opacity:1,x:0}}
        exit={{opacity:0,x:-100}}
        transition={{duration: 0.3}}
-      className='flex items-center justify-center max-w-7xl mx-auto'>
-          <form onSubmit={handleSubmit} className='w-1/2 border border-gray-200 rounded-md p-4 my-10'>
+        className='flex items-center justify-center max-w-7xl mx-auto'>
+          <form onSubmit={handleSubmit} className='md:w-1/2 border sm:w-full border-gray-200 rounded-md p-4 my-10'>
                <h1 className='font-bold text-lx md-5 text-red-600'>Login</h1>
                <div className='my-2'>
                    <Label>Email</Label>

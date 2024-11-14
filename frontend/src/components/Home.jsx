@@ -30,7 +30,7 @@ const Home = () => {
   },[]);
 
   return (
-    <div>
+    <div className='sm:ml-10 md:ml-0 sm:p-3 md:p-0'>
      <Navbar/>
      <HeroSection/>
      <CategoryCarousel/>

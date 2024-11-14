@@ -167,8 +167,11 @@ const PostJob = () => {
              />
             </div>
           </div>
-
-         {
+      <div>
+        
+      </div>
+        <div className='mt-5'>
+        {
             companies.length > 0 && (
               <Select onValueChange={selectChangeHandler}>
                  <SelectTrigger className="w-[180px]">
@@ -189,6 +192,7 @@ const PostJob = () => {
     </Select>
             )
          }
+        </div>
          
          
           <div className='mt-5'>

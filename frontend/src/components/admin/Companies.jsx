@@ -23,12 +23,12 @@ const Companies = () => {
   },[input]);
 
   return (
-    <div>
+    <div className='sm:px-3 md:px-0'>
        <Navbar/>
        <div className='max-w-6xl mx-auto my-10'>
         <div className='flex items-center justify-between my-5'>
             <Input type="text" 
-                   placeholder="Filter by name"
+                   placeholder="Find by name"
                    className="rounded-xl w-9 border border-gray-300 placeholder-gray-400 font-medium"
                    onChange={(e)=> setInput(e.target.value)}
                    />

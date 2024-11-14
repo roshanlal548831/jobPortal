@@ -45,7 +45,7 @@ const JobDescription = () => {
 
   
   return (
-    <>
+    <div className='sm:px-5 md:p-0'>
     <Navbar/>
     <div className='max-w-7xl mx-auto my-10'>
       <div className='flex justify-between items-center'>
@@ -74,7 +74,7 @@ const JobDescription = () => {
          <h1 className='font-bold my-1'>Posted Date: <span className='pl-4 font-normal text-gray-800'>{singleJob?.createdAt.split("T")[0]}</span></h1>
       </div>
     </div>
-    </>
+    </div>
   )
 }
 

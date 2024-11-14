@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 
 const LatestJobCards = ({job}) => {
   const navigate = useNavigate()
+  
   return (
     <motion.div 
     initial={{opacity:0,x:100}}
