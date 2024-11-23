@@ -81,7 +81,10 @@ export const  register = async(req,res) =>{
       })
 
     } catch (error) {
-        console.log(error)
+        return res.status(400).json({
+            message:"Register failed.",
+            success:false
+        })
     }
 }
 
@@ -146,7 +149,10 @@ export const login = async(req,res) =>{
 
 
     } catch (error) {
-        console.log(error)
+        return res.status(500).json({
+            message:"Login failed.",
+            success:false
+        })
     }
 };
 
@@ -157,7 +163,10 @@ export const logout = async (req,res) =>{
             success:true
         })
     } catch (error) {
-        console.log(error)
+        return res.status(400).json({
+            message:"logout failed.",
+            success:false
+        })
         
     }
 }
