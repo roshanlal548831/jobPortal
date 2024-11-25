@@ -36,7 +36,9 @@ app.use("/api/v1/company",companyRoures)
 app.use("/api/v1/job",jobRoutes)
 app.use("/api/v1/applicatios",applicationRoutes)
 
-
+app.get("/",(req,res)=>{
+     res.send(`server run successfully port ${post}`)
+})
 
 app.listen(post,()=>{
     console.log(`server run on http://localhost:${post}`)
