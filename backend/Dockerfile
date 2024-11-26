@@ -3,4 +3,4 @@ WORKDIR /app
 COPY package*.json ./
 COPY . .
 EXPOSE 8000
-CMD ["node","index"]
+CMD ["node","index.js"]
