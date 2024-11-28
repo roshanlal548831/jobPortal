@@ -8,7 +8,7 @@ export default defineConfig({
     host: '0.0.0.0', 
     proxy: {
       '/api': {
-        target: 'https://jobportal-1-hj3h.onrender.com', // Backend server URL
+        target: 'https://job-portal-server-puce.vercel.app', // Backend server URL
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, 'api'),
