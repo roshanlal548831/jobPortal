@@ -75,7 +75,7 @@ useEffect(()=>{
                    <Label>Email</Label>
                    <Input type="email" 
                    name="email"
-                    placeholder="roshan@gmai.com"
+                    placeholder="xyz@gmai.com"
                     value={input.email}
                     onChange={handleChange}
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"

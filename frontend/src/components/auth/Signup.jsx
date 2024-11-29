@@ -81,7 +81,7 @@ useEffect(()=>{
                <div className='my-2'>
                    <Label>Full Name</Label>
                    <Input 
-                   placeholder="Roshan"
+                   placeholder="Enter your full name"
                    value={input.fullname}
                    type="text" 
                     name="fullname"
@@ -95,7 +95,7 @@ useEffect(()=>{
                      onChange={(e) => setInput({...input,email:e.target.value})}
                      name="email" 
                    value={input.email}
-                    placeholder="roshan@gmai.com"
+                    placeholder="xyz@gmai.com"
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
                    />
                </div>
@@ -105,7 +105,7 @@ useEffect(()=>{
                      onChange={(e) => setInput({...input,phoneNumber:e.target.value})}
                      name="phoneNumber"
                    value={input.phoneNumber}
-                    placeholder="877076246"
+                    placeholder="Enter your whatsApp number"
                     className="rounded-xl border border-gray-300 placeholder-gray-400 font-medium"
                    />
                </div>
